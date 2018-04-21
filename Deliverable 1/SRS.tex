@@ -1,0 +1,702 @@
+\documentclass[]{article}
+
+% Imported Packages
+%------------------------------------------------------------------------------
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{setspace}
+\usepackage{color}
+%------------------------------------------------------------------------------
+
+% Header and Footer
+%------------------------------------------------------------------------------
+\pagestyle{plain}  
+\renewcommand\headrulewidth{0.4pt}                                      
+\renewcommand\footrulewidth{0.4pt}                                    
+%------------------------------------------------------------------------------
+
+% Title Details
+%------------------------------------------------------------------------------
+\title{Software Requirements Specification Document}
+\author{Group \#4 \\
+Attia, Abrar - attiaa1 - 400017188 \\
+Ansell, Evan - ansellea - 1415992 \\
+Fayez, Susan - fayezs - 001404420 \\
+Yin, Hao - yinh1 - 400016540 \\
+Yang, Zhiwen - yangz18 - 400023048 }
+\date{2018-02-09}                               
+%------------------------------------------------------------------------------
+ 
+% Document
+%------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle	
+
+\newpage
+
+\section{Introduction}
+\label{sec:introduction}
+% Begin Section
+
+\subsection{Purpose}
+\label{sub:purpose}
+% Begin SubSection
+{\color{red}
+The purpose of this SRS document is to provide the stakeholders with a better understanding of the system structure and general functionality. The document will be used to formalize the regulation of system operations and asist in maintaining the system. The intended audience of the SRS is mainly the project managers.}
+% End SubSection
+
+\subsection{Scope}
+\label{sub:scope}
+% Begin SubSection
+FORESTER is an Android application that will allow Users to identify plants in Ontario.{\color{red} The User will be able to identify a plant based on selective characteristics such as colour, size, leaf shape, flowers, fruit, thorns, and location}. The system will produce a summary page of the plant once identified, that would include a picture and whether it is poisonous and/or edible. Further utilities of Forester include a Researcher option that would allow approved parties to view and potentially alter the internal data set, as well as an Administrator that oversees any changes. The application will also include the option for Users to filter for plants by location.
+
+% End SubSection
+
+\subsection{Definitions, Acronyms, and Abbreviations}
+\label{sub:definitions_acronyms_and_abbreviations}
+% Begin SubSection
+\begin{enumerate}[a)]
+	\item \textbf{User: }The consumer-level client of the system.
+	\item \textbf{Researcher: }An approved party that can view and request updates to the database
+	\item \textbf{Administrator: }A management-level party that approves and denies requests for changes to the database
+	\item \textbf{Homepage: }The interface for User-level functions
+	\item \textbf{Researcher Homepage: }The interface for Researcher-level functions
+	\item \textbf{Administrator Homepage: }The interface for Administrator-level functions
+	\item \textbf{Contribution Record: }A record of all the changes a specific Researcher has requested
+	\item \textbf{Database Update Requests: }Requests for changes to the database that the Administrator has not yet approved or denied
+\end{enumerate}
+% End SubSection
+
+\subsection{References}
+\label{sub:references}
+% Begin SubSection
+\begin{enumerate}[a)]
+	\item The available plant identification system ``PlantNet Plant Identification'' referenced in section 2.1 can be found at https://identify.plantnet-project.org/ 
+\end{enumerate}
+% End SubSection
+
+\subsection{Overview}
+\label{sub:overview}
+% Begin SubSection
+{\color{red}
+The rest of SRS contains product perspectives, product functions, user characteristics, constraints, assumptions \& dependencies, apportioning of requirements and system's functional \& non-functional requirements, followed by project's division of labour.
+
+
+This SRS consists of overall description of scopes, purposes, constraints and features of the system which identify plants in Ontario, and then it lists out all functional and non-functional requirements which programmers are supposed to follow when developing the project. All functional requirements are in forms of business events which have view points as external actors to keep track of expected functionalities of the system. Non-functional requirements are all regulations to improve qualities of the system.}
+% End SubSection
+
+% End Section
+
+\section{Overall Description}
+\label{sec:overall_description}
+% Begin Section
+
+\subsection{Product Perspective}
+\label{sub:product_perspective}
+% Begin SubSection
+There are currently many plant identification applications available such as PlantNet Plant Identification, however they all share the same method: photo analysis. While it can be convenient, analyzing photos taken by users can have some drawbacks: it requires the user to be connected to the internet and it requires the user to be able to take a good photograph. Our application will be based off of the user's observations which they will record with text, and we aim to store all of the required data locally. \\ \\
+Our application will be entirely independant and self-contained.
+
+% End SubSection
+
+\subsection{Product Functions}
+\label{sub:product_functions}
+% Begin SubSection
+The plant identification application will allow the Users to identify a specific plant and receive {\color{red}possible matches with relevant information on each match.} They will obtain a result by entering the characteristics of the plant in question. The search criteria will include various features that will assist in classifying the plant based on its description. \\ \\
+Through the data used, the result of the search will display {\color{red} all possible matches to the plant, ranked by the best match the entered description.} The User will be able to select the desired plant and the system will provide more information on the plants, such as whether it is poisonous or not.  \\ \\
+A unique feature of Forestor is that the User will be able to receive a list of plants known to be in an entered location. This functionally of the application can be used in scenarios where a user wants to identify the most typical plants in an area such as a national park or forest. \\ \\
+{\color{red}
+An additional feature of the application is that there will be a Researcher mode, where academics and professionals can get access to the data in the system. Researcher mode will allow the user to alter and add to the data set. These functionalities will be restricted to only the Researchers and cannot be accessed by the Users. \\ \\
+The final feature of the application is an Administrator mode. This will allow management level users to approve or deny Database Update Requests from the Researchers. The Administrator functionalities will be restricted from the Researchers and Users.}
+
+% End SubSection
+
+\subsection{User Characteristics}
+\label{sub:user_characteristics}
+% Begin SubSection
+{\color{red}
+ For the generic Users of the application, the expected demographic is foragers and regular people who have an interest in plants, wanting to find out whether a plant is poisonous, edible, or neither. For the Researchers of the application, the  expected demographic is academics who have knowledge in the field of plants and plant identification. For the Administrators of the application, the expected demographic is management level employees of Forester.}
+% End SubSection
+
+\subsection{Constraints}
+\label{sub:constraints}
+% Begin SubSection
+{\color{red}
+ The project design and execution will be limited to what can be achieved within the set time frame placed by the duration of the course. Additionally, the database will be constrained by what the developers can find or produce within the time frame. The project will also be constrained by having no budget. The developers will have to develop the app without any monetary support.}
+% End SubSection
+
+\subsection{Assumptions and Dependencies}
+\label{sub:assumptions_and_dependencies}
+% Begin SubSection
+\begin{enumerate}
+	\item The User will be attempting to identify plants in Ontario.
+	\item The system will require the User to have a functional GPS in order to track their location. 
+\end{enumerate}
+% End SubSection
+
+\subsection{Apportioning of Requirements}
+\label{sub:apportioning_of_requirements}
+% Begin SubSection
+Not applicable.
+% End SubSection
+
+% End Section
+
+
+\section{Functional Requirements}
+\label{sec:functional_requirements}
+% Begin Section
+\begin{enumerate}[{VP}1.]
+	\item User 
+	\begin{enumerate}[{BE1}.1]
+		\item The User wants to access the Homepage
+		\begin{enumerate}
+			\item Upon running the application, the system must direct the User to the Homepage
+		\end{enumerate}
+		\item The User wants to identify a particular plant.
+		\begin{enumerate}
+			\item The system must present the User with the option to identify a plant 
+			\item The system must prompt the User to enter characteristics to identify the plant
+			{\color{red}\item The system must prompt the User to confirm entered characteristics}
+			\item The system must display all possible matches to the plant the User has described
+			\item Each match displayed must state the name of the plant, whether or not it is poisonous, whether or not it is edible, and a picture of the plant
+			\item The system must save the results of the search
+			\item The User must be given the option to return to the Homepage
+		\end{enumerate}
+		\item The User wants to view the plants common to their area
+		\begin{enumerate}
+		    \item The system must present the User with the option to do location-based plant searches
+		    \item The system must obtain the User's location using either location services or prompting the User to enter a location
+		    \item The system must display all of the known plants in the area the User enters
+		    \item Each match displayed must state the name of the plant, whether or not it is poisonous, whether or not it is edible, and a picture of the plant
+		    \item The system must save the results of the search
+		    \item The system must present the option of returning to the Homepage
+		\end{enumerate}
+		\item The User wants to view past plant identification searches
+		\begin{enumerate}
+		    \item The system must present the User with the option to view past searches
+		    \item The system must display the User's previous searches, identified by a date and time stamp of when the results were initially displayed to the User
+		    \item The searches must be ordered by when they occurred, with the most recent search at the top
+		    \item The User must be given the option to return to the Homepage
+		\end{enumerate}
+		\item The User wants to view the results of a specific past search
+		\begin{enumerate}
+		    \item The User must be permitted to select a specific search from the history to view the results
+		    \item The system must display the results of the search as well as any pictures the User attached to the search.
+		    \item The User must be given the option to return to the Homepage
+		\end{enumerate}
+		\item The User wants to clear their Search History
+		\begin{enumerate}
+		    \item The system must present the User with the option to clear their Search History
+		    \item The system must present the User with a message that asks the User if they are sure they wish to clear their Search History and warns them that the information cannot be retrieved if they proceed
+		    \item The warning message must have  "Proceed" and "Cancel" options
+		    \item The warning message must close when the Users selects an option
+		    \item If the User chooses to cancel, they must be returned to the Homepage
+		    \item If the User chooses to proceed, the system must delete all search records and display a confirmation of deletion message
+		    \item The User must be presented with an option to return to the Homepage
+		\end{enumerate}
+	\end{enumerate}
+	\item Researcher
+	\begin{enumerate}[{BE2}.1]
+		\item The Researcher wants to log in to the system
+		\begin{enumerate}
+			\item The system must present the Researcher with the option of accessing the system as a Researcher
+			\item The system must prompt the Researcher to enter their log in credentials
+			\item The system must verify the login credentials
+			\item If invalid credentials are entered, the Researcher must be presented with a message informing them their login was unsuccessful due to invalid credentials
+			\item The system must display the Researcher Homepage when the Researcher has successfully entered their credentials
+		\end{enumerate}
+		\item The Researcher wants to view the plants in the database
+		\begin{enumerate}
+			\item The system must present the Researcher with the option to view the plant database
+			\item When the Researcher selects the option to view the database, the database must be displayed
+			\item Plants in the database must be identified by name
+			\item The Researcher must be presented with the option to return to the Researcher Homepage
+		\end{enumerate}
+		\item The Researcher wants to view the information on a specific plant
+		\begin{enumerate}
+		    \item The Researcher must be given the option to search for and select a specific plant to view its information
+		    \item The plant information page must show the name of the plant, associated colours, approximate sizes, leaf shapes,  presence of flowers, presence of fruit, presence of thorns, locations, and picture
+		    \item The Researcher must be given the option to return to the Researcher Homepage
+		\end{enumerate}
+		\item The Researcher wants to propose an edit to the information attached to a particular plant
+		\begin{enumerate}
+			\item The system must present the Researcher with the option to request edits on plant information
+			\item The system must allow the Researcher to enter the information they wish to change
+			\item The Researcher must be presented with the option to either submit or discard the request for change
+			\item The system must require the Researcher to provide a reason for the edit request
+			{\color{red}\item The details of the request must be added to the Researcher's Contribution Record, with the status set to "Awaiting Approval"}
+			\item The Researcher must be redirected to the Researcher Homepage once they have submitted or discarded their changes
+		\end{enumerate}
+		\item The Researcher wants to propose the addition of a new plant into the system
+		\begin{enumerate}
+			\item The system must present the Researcher with the option to request the addition of a new plant into the database
+			\item {\color{red}The system must present the Researcher with a submission page that prompts them to enter the new plant's information}
+			\item The system must allow the User to either submit or discard the request for the new plant
+			\item The Researcher must be required to enter information for every field for the request to be submitted
+			\item {\color{red}The details of the request must be added to the Researcher's Contribution Record, with the status set to "Awaiting Approval"}
+			\item {\color{red}The Researcher must be redirected to the Researcher Homepage}
+		\end{enumerate}
+		\item The Researcher wants to propose the deletion of a plant from the system
+		\begin{enumerate}
+			\item The system must present the Researcher with the option to request the deletion of a plant from the database
+			\item The system must present the Researcher with the option to submit the request for approval
+			\item The Researcher must be prompted to provide a reason for deletion in order to submit the request
+			\item {\color{red}The details of the request must be added to the Researcher's Contribution Record, with the status set to "Awaiting Approval"}
+			\item {\color{red}The Researcher must be redirected to the Researcher Homepage}
+		\end{enumerate}
+		\item The Researcher wants to view their contributions
+		\begin{enumerate}
+			\item The Researcher must be given the option to view their Contribution Record
+			\item The system must display the edit, addition, and deletion requests the Researcher has made
+			\item Each request must display the date and time of submission as well as their status as either "Awaiting Approval", "Approved", or "Denied"
+			\item The contributions must be ordered by date and time of submission, with the most recent first
+			\item The system must present the Researcher with the option to return to the Researcher Homepage
+		\end{enumerate}
+		\item The Researcher wants to view the details of a specific request
+		\begin{enumerate}
+		    \item The system must allow the Researcher to click on a specific request to view the details
+		    \item For an edit, the record must show the date and time of request submission, the status of the request, original information for the plant, and the suggested edit
+		    \item For an addition, the record must show the date and time of request submission, the status of the request, and the information of the new plant
+		    \item For a deletion, the record must show the date and time of request submission, the status of the request, and the original plant information
+		    \item The system must present the Researcher with the option of returning to the Researcher Homepage
+		\end{enumerate}
+		\item The Researcher wants to update their password
+		\begin{enumerate}
+		    \item The system must provide the Researcher with the option to update their password
+		    \item The system must prompt the Researcher to confirm their current password in order to choose a new password
+		    \item The system must prompt the Researcher to enter and reenter their new password
+		    \item The system must present the Researcher with the option to submit the password change or discard it
+		    \item The system must redirect the Researcher to the Researcher Homepage when they have submitted or discarded their password change
+		\end{enumerate}
+	\end{enumerate}
+	\item Administrator
+	\begin{enumerate}[{BE3}.1]
+	    \item The Administrator wants to log in to the system
+	    \begin{enumerate}
+	        \item The system must present the option of logging in as an Administrator
+	        \item The system must prompt the Administrator to enter their log in credentials
+			\item The system must verify the login credentials
+			\item If invalid credentials are entered, the Administrator must be presented with a message informing them their login was unsuccessful due to invalid credentials
+			\item The system must display the Administrator Homepage when the Administrator has successfully entered their credentials
+	    \end{enumerate}
+	    \item The Administrator wants to view the Database Update Requests
+	    \begin{enumerate}
+	        \item The system must present the option to view Database Update Requests
+	        \item The Database Update Requests page must display all pending requests that have not yet been approved or denied
+	        \item Each request must display the type of request, the date and time of submission, the name of the plant it intends to modify, and identification of the Researcher who submitted the request
+	        \item The requests must be sorted by date and time of submission, with the oldest at the top
+	        \item The system must present the Administrator with the option to return to the Administrator Homepage
+	    \end{enumerate}
+	    \item The Administrator wants to view a specific request
+	    \begin{enumerate}
+	        \item The system must allow the Administrator to select a specific request
+	        \item For all requests, the system must display the type of request, the date and time of request submission, and identification of the Researcher who submitted the
+	        \item For edits, the system must show the original information, the requested new information, and the justification for the edit
+	        \item For additions, the system must show the information of the proposed plant
+	        \item For deletions, the system must show the information of the plant and the justification for deletion
+	        \item The system must present the Administrator with the option to return to the Administrator Homepage
+	    \end{enumerate}
+	    \item The Administrator wants to approve a specific request
+	    \begin{enumerate}
+	        \item The system must present the Administrator with the option of approving a request
+	        \item The database must be updated to reflect the approved request
+	    \end{enumerate}
+	     \item The Administrator wants to deny a specific request
+	    \begin{enumerate}
+	        \item The system must present the Administrator with the option of denying a request
+	    \end{enumerate}
+	    \item The Administrator wants to update their password
+	    \begin{enumerate}
+	         \item The system must provide the Administrator with the option to update their password
+		    \item The system must prompt the Administrator to confirm their current password in order to choose a new password
+		    \item The system must prompt the Administrator to enter and reenter their new password
+		    \item The system must present the Administrator with the option to submit the password change or discard it
+		    \item The system must redirect the Administrator to the Administrator Homepage when they have submitted or discarded their password change
+	    \end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+
+% End Section
+
+\section{Non-Functional Requirements}
+\label{sec:non-functional_requirements}
+% Begin Section
+\subsection{Look and Feel Requirements}
+\label{sub:look_and_feel_requirements}
+% Begin SubSection
+
+\subsubsection{Appearance Requirements}
+\label{ssub:appearance_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{LF}1. ]
+	\item The application {\color{red}shall} provide a uniform look and feel between all sections
+\end{enumerate}
+\begin{enumerate}[{LF}2. ]
+	\item The default text size shall be big enough for the average user to read
+\end{enumerate}
+\begin{enumerate}[{LF}3. ]
+	\item The application {\color{red}shall} clearly show all buttons, pages, search bar.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Style Requirements}
+\label{ssub:style_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{LF}4. ]
+	\item The application shall have a modern design that is appealing to look at
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Usability and Humanity Requirements}
+\label{sub:usability_and_humanity_requirements}
+% Begin SubSection
+
+\subsubsection{Ease of Use Requirements}
+\label{ssub:ease_of_use_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{UH}1. ]
+	\item The application shall communicate the plants information clearly in an an organized manner
+\end{enumerate}
+\begin{enumerate}[{UH}2. ]
+	\item The application shall be easy and intuitive to use.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Personalization and Internationalization Requirements}
+\label{ssub:personalization_and_internationalization_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{UH}4. ]
+	\item {\color{red}N/A}
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Learning Requirements}
+\label{ssub:learning_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{UH}5. ]
+	\item The application shall be designed such that the user requires no tutorial to use it.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Understandability and Politeness Requirements}
+\label{ssub:understandability_and_politeness_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{UH}6. ]
+	\item The information provided by application {\color{red}shall} be clear to understand for users fluent in English
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Accessibility Requirements}
+\label{ssub:accessibility_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{UH}7. ]
+	\item {\color{red}The application shall have an impaired vision mode that increases the default font size by 25\%}
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Performance Requirements}
+\label{sub:performance_requirements}
+% Begin SubSection
+
+\subsubsection{Speed and Latency Requirements}
+\label{ssub:speed_and_latency_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\item The product shall provide the user with {\color{red}an output} within 10 seconds.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Safety-Critical Requirements}
+\label{ssub:safety_critical_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{1}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Precision or Accuracy Requirements}
+\label{ssub:precision_or_accuracy_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{2}
+	\item The product shall correctly determine the plant in question with its first guess 90\% of the time.
+	\item The product shall correctly determine the plant in question within its third guess 99\% of the time.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Reliability and Availability Requirements}
+\label{ssub:reliability_and_availability_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{4}
+	\item {\color{red}N/A}
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Robustness or Fault-Tolerance Requirements}
+\label{ssub:robustness_or_fault_tolerance_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{5}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Capacity Requirements}
+\label{ssub:capacity_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{6}
+	\item The product shall take up no more than 1GB of storage when installed on the target device.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Scalability or Extensibility Requirements}
+\label{ssub:scalability_or_extensibility_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{7}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Longevity Requirements}
+\label{ssub:longevity_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{PR}1.]
+	\setcounter{enumi}{8}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Operational and Environmental Requirements}
+\label{sub:operational_and_environmental_requirements}
+% Begin SubSection
+
+\subsubsection{Expected Physical Environment}
+\label{ssub:expected_physical_environment}
+% Begin SubSubSection
+\begin{enumerate}[{OE}1.]
+	\item The product shall be able to be used in remote locations such as parks and forests without access to data from a cellular network.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Requirements for Interfacing with Adjacent Systems}
+\label{ssub:requirements_for_interfacing_with_adjacent_systems}
+% Begin SubSubSection
+\begin{enumerate}[{OE}1.]
+	\setcounter{enumi}{1}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Productization Requirements}
+\label{ssub:productization_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{OE}1.]
+	\setcounter{enumi}{2}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Release Requirements}
+\label{ssub:release_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{OE}1.]
+	\setcounter{enumi}{3}
+	\item N/A
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Maintainability and Support Requirements}
+\label{sub:maintainability_and_support_requirements}
+% Begin SubSection
+
+\subsubsection{Maintenance Requirements}
+\label{ssub:maintenance_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{MS}1.]
+	\item The system is {\color{red}shall} run its services independently when some functionalities of it are in maintenance or not available.
+	\item The system {\color{red}shall} save all previous Researcher's requests when it's in maintenance.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Supportability Requirements}
+\label{ssub:supportability_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{MS}3.]
+	\item {\color{red}N/A}
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Adaptability Requirements}
+\label{ssub:adaptability_requirements}
+% Begin SubSubSection
+	\begin{enumerate}[{MS}4.]
+	\item The system {\color{red}shall be able to} support different terminal devices which have Android OS.
+	\end{enumerate}
+	\begin{enumerate}[{MS}5.]
+	\item The application {\color{red}shall be} able to fit incoming updates of Android OS.
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Security Requirements}
+\label{sub:security_requirements}
+% Begin SubSection
+
+\subsubsection{Access Requirements}
+\label{ssub:access_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{SR}1.]
+	\item {\color{red} Only Researchers may view and request changes to the data set}
+\end{enumerate}
+\begin{enumerate}[{SR}2.]
+	\item {\color{red} Only Administrators may approve or deny Database Update Requests}
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Integrity Requirements}
+\label{ssub:integrity_requirements}
+% Begin SubSubSection
+	\begin{enumerate}[{SR}3.]
+	\item {\color{red}The system shall be protected from all unauthorized attempts to read or manipulate its data.}
+	\end{enumerate}
+	\begin{enumerate}[{SR}4.]
+	\item Standard users shall not have authority to edit data.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Privacy Requirements}
+\label{ssub:privacy_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{SR}5.]
+	\item The system shall verify all manipulations of data to get rid of sensitive or illegal texts.
+\end{enumerate}
+\begin{enumerate}[{SR}6.]
+	\item The system shall not provide any type of users with personal information of any other users.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Audit Requirements}
+\label{ssub:audit_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{SR}7.]
+	\item Users are required to confirm whether the change of data is expected.
+	\end{enumerate}
+	\begin{enumerate}[{SR}8.]
+	\item The system shall allow users to retype if previous inputs are invalid.
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Immunity Requirements}
+\label{ssub:immunity_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{SR}9.]
+	\item{\color{red} N/A}
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Cultural and Political Requirements}
+\label{sub:cultural_and_political_requirements}
+% Begin SubSection
+
+\subsubsection{Cultural Requirements}
+\label{ssub:cultural_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{CP}1.]
+	\item The {\color{red}system} shall identify plants specific to Ontario
+	\item The {\color{red}system} shall use Canadian English spelling
+	\item No material considered offensive in Canada shall be used
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Political Requirements}
+\label{ssub:political_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{CP}4.]
+	\item {\color{red}N/A}
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+\subsection{Legal Requirements}
+\label{sub:legal_requirements}
+% Begin SubSection
+
+\subsubsection{Compliance Requirements}
+\label{ssub:compliance_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{LR}1.]
+	\item No images used in the system shall infringe on any copyrights
+	\item The system shall operate within the jurisdiction of Canada
+	\item The system shall comply with the policies of Google's play store
+\end{enumerate}
+% End SubSubSection
+
+\subsubsection{Standards Requirements}
+\label{ssub:standards_requirements}
+% Begin SubSubSection
+\begin{enumerate}[{LR}4.]
+	\item {\color{red}N/A}
+
+\end{enumerate}
+% End SubSubSection
+
+% End SubSection
+
+% End Section
+
+\newpage 
+
+\appendix
+\section{Division of Labour}
+\label{sec:division_of_labour}
+% Begin Section
+
+Purpose � HAO \\
+Scope -- Everyone \\
+Definitions -- Everyone \\
+References -- Everyone \\
+Overview -- HAO \\
+Product perspective � EVAN \\
+Product functions � ABRAR \\
+User Characteristics � HAO \\
+Constraints � Everyone \\
+Assumptions \& Dep. � Everyone \\
+Apportioning of req. - Everyone \\
+Functional requirements - SUSAN \\
+Non-functional requirements: \\
+4.1. \& 4.2. � ALLEN \\
+4.3. \& 4.4. � EVAN \\
+4.5. \& 4.6. � HAO \\
+4.7. \& 4.8. � SUSAN \\
+Division of Labour - ABRAR\\
+D1 Resubmission Edits - SUSAN
+
+% End Section
+
+\end{document}
+
